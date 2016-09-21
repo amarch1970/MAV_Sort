@@ -10,8 +10,10 @@ public class MAV_QSort {
 
 	public void make_QSort(Integer[] SortArr){
 		nlen = SortArr.length;
-		qSortArr = SortArr;
-		QSort(0, nlen-1);
+		if (SortArr.length >= 1) {			
+			qSortArr = SortArr;
+			QSort(0, nlen-1);
+		}
 	}
 	
 	private void QSort(int x1, int x2){
@@ -44,7 +46,9 @@ public class MAV_QSort {
 				if (i == nPos) nPos = j; else if (j == nPos) nPos = i;
 			}
 		}
-		QSort(x1, nPos-1);
-		QSort(nPos+1, x2);
+		if ((nPos-1) > x1)
+			QSort(x1, nPos-1);
+		if (x2 > nPos+1)
+			QSort(nPos+1, x2);
 	}
 }
